@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">IoBubbleT</string>
+    <string name="title_activity_btscan">BTScanActivity</string>
 </resources>
