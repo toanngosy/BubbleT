@@ -44,7 +44,7 @@ public class BTScanActivity extends AppCompatActivity {
         Iterator it = signals.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            list.add(""+pair.getKey()+pair.getValue());
+            list.add(""+pair.getKey()+pair.getValue()+devices.get(pair.getKey()).getName());
         }
 
 
@@ -76,7 +76,7 @@ public class BTScanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_btscan);
 
         final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         btAdap = bluetoothManager.getAdapter();
@@ -90,8 +90,8 @@ public class BTScanActivity extends AppCompatActivity {
         registerReceiver(mReceiver, filter);
 
 
-        final FloatingActionButton addButton = findViewById(R.id.scan);
-        addButton.setOnClickListener(new View.OnClickListener() {
+        final FloatingActionButton scanButton = findViewById(R.id.scan);
+        scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 scanBluetooth();
@@ -110,7 +110,7 @@ public class BTScanActivity extends AppCompatActivity {
     };
 
     public void scanBluetooth(){
-
+        /*
         final BluetoothLeScanner btScanner  = btAdap.getBluetoothLeScanner();
         btScanner.startScan(scanCallback);
 
@@ -121,8 +121,8 @@ public class BTScanActivity extends AppCompatActivity {
                 setList();
             }
         }, SCAN_PERIOD);
+*/
 
-        /*
         btAdap.startDiscovery();
 
         new Handler().postDelayed(new Runnable() {
@@ -132,7 +132,7 @@ public class BTScanActivity extends AppCompatActivity {
                 setList();
             }
         }, SCAN_PERIOD);
-        */
+
     }
 
     public double calcDistance(int rssi, int txp){
