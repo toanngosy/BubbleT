@@ -54,6 +54,17 @@ public class BTScanActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
 
+        final Intent commIntent = new Intent(this, BTCommActivity.class);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final String item = (String) parent.getItemAtPosition(position);
+                commIntent.putExtra("address", item);
+                startActivity(commIntent);
+            }
+        });
+
     }
 
 
@@ -147,6 +158,8 @@ public class BTScanActivity extends AppCompatActivity {
         return (0.89976) * Math.pow(ratio, 7.7095) + 0.111;
 
     }
+
+
 
 }
 
