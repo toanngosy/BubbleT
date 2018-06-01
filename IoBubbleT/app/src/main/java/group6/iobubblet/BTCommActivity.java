@@ -20,7 +20,7 @@ public class BTCommActivity extends AppCompatActivity {
 
     public void connectDevice(String address){
 
-        
+
 
     }
 
